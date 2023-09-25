@@ -1,0 +1,45 @@
+#!/bin/sh
+
+start() {
+  if_commands=$(ifconfig -a |                                                           \
+    awk '$1~/eth[0-9]+/                                                                 \
+    {                                                                                   \
+        split($5,h,":");                                                                \
+        m="255.255.255.0";                                                              \
+        if(h[2]=="16") m="255.255.0.0";                                                 \
+        if(h[2]=="08") m="255.0.0.0";                                                   \
+        printf("ifconfig %s %d.%d.%d.%d netmask %s\n", $1, "0x"h[3], "0x"h[4], "0x"h[5], "0x"h[6], m);  \
+    }')
+  printf '%s\n' "$if_commands" | while IFS= read -r line; do
+    echo $line
+    `$line`
+  done
+}
+
+stop() {
+  sleep 1
+}
+
+restart() {
+  stop
+  sleep 1
+  start
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart|reload)
+    restart
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+
+exit $?
+
