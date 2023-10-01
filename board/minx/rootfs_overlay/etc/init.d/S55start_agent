@@ -1,0 +1,35 @@
+#!/bin/sh
+
+start() {
+  cd /agent
+  ./agent agent 2>/var/log/agent-error.log > /var/log/agent.log
+}
+
+stop() {
+  echo "I cannot do that :("
+  sleep 1
+}
+
+restart() {
+  stop
+  sleep 1
+  start
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart|reload)
+    restart
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+
+exit $?
+
