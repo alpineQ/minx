@@ -11,7 +11,7 @@ sudo ip link set dev ${TAPNAME}_$1 up
 sudo ip link set dev ${BRNAME} up
 
 printf -v macaddr "52:16:0A:07:00:%02x" $(( $1 & 0xff ))
-qemu-system-x86_64 --enable-kvm -M q35 -m 64M \
+qemu-system-x86_64 --enable-kvm -M q35 -m 128M \
 	-cpu host -smp 1,sockets=1,cores=1,threads=1 \
 	-machine type=pc,accel=kvm \
 	-cdrom minx.iso \
