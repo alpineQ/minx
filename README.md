@@ -5,7 +5,7 @@ Build image
 wget https://buildroot.org/downloads/buildroot-2023.02.4.tar.xz
 tar xvf buildroot-2023.02.4.tar.xz
 cd buildroot-2023.02.4/
-cp -r ../board/* board/ && cp ../minx_defconfig configs/
+cp -r ../board/minx board/ && cp ../minx_defconfig configs/
 make O=build.minx minx_defconfig
 cd build.minx/
 make -j
