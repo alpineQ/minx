@@ -15,6 +15,7 @@ qemu-system-x86_64 --enable-kvm -M q35 -m 128M \
 	-cpu host -smp 1,sockets=1,cores=1,threads=1 \
 	-machine type=pc,accel=kvm \
 	-cdrom minx.iso \
+	-drive file=./minx/agent.iso,format=raw,index=0,media=cdrom \
 	-nographic \
  	-serial mon:stdio \
 	-netdev tap,id=net0,ifname=${TAPNAME}_$1,script=no,downscript=no \
