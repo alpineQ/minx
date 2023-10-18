@@ -1,0 +1,11 @@
+127.0.0.1	localhost
+127.0.1.1	minx
+10.7.0.4	postgres
+10.7.0.5	userapigateway
+10.7.0.6	keycloak
+10.7.0.8	ldap
+10.7.0.9	hostapigateway
+10.7.0.10	authenticator
+10.7.0.12	frontend
+10.7.0.13	zookeeper
+10.7.0.11	kafka

@@ -1,8 +1,7 @@
 #!/bin/sh
 
 start() {
-  cd /agent
-  ./agent agent 2>/var/log/agent-error.log > /var/log/agent.log
+  hostname minx-$RANDOM
 }
 
 stop() {

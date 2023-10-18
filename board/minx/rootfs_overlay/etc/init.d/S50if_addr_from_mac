@@ -14,6 +14,7 @@ start() {
     echo $line
     `$line`
   done
+  ip route add default via 10.7.0.1
 }
 
 stop() {
